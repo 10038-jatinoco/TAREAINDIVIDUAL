@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Productos</title>
+</head>
+<body>
+
+	<form>
+		 <fieldset>
+	 	<legend>Datos Básicos</legend>
+	 	<label for="nombre_p">Nombre del Producto:</label>
+    <input type="text" id="producto" name="nombre_producto">
+    <br>
+    <br>
+    <label for="descripcion">Descripción:</label><br>
+    <textarea name="Descripción" rows="4" cols="25"></textarea>
+   <br>
+   <br>
+   <label for="foto">Foto:</label><br>
+   	<input type="file">
+   	<br>
+   	<br>
+   	<input type="checkbox" name="informacion">Añadir información confidencial
+    <br>
+</fieldset>
+	<br>
+	 <fieldset>
+	 	<legend>Datos Económicos</legend>
+	 <label for="precio">Precio:</label>
+	  <input type="number" name="precio" style="width: 140px;"> <a>$</a>
+	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label for="impuesto">Impuestos:</label>
+		<select name="impuesto">
+		<option>4%</option>
+		<option>8%</option>
+		<option>12%</option>
+		<option>16%</option> 
+	</select>
+
+	  <br>
+	  <br>
+	  <label for="precio">Promoción</label><br>
+	  <input type="radio" name="ninguno" value="1">Ninguno <br>
+	  <input type="radio" name="gratis" value="2">Transporte Gratuito <br>
+	  <input type="radio" name="descuento" value="3">Descuento 5% 
+	</fieldset>
+
+	<br>
+
+	    <input class="guardar" type="submit" value="Guardar Cambios">
+	    <input class="borrar" type="reset" value="Borrar los datos introducidos">  
+	</form>
+	<br>
+	<br>
+	<button onclick="window.location.href='../index.html'">Regresar</button>
+
+<script>
+  // Función para borrar los datos ingresados en el formulario
+  function borrarDatos() {
+    // Obtenemos el formulario y los campos que queremos borrar
+    const formulario = document.querySelector('form');
+    const campos = formulario.querySelectorAll('input[type="text"], textarea, select');
+
+    // Recorremos los campos y los vaciamos
+    campos.forEach(campo => {
+      campo.value = '';
+    });
+  }
+
+  // Agregamos un evento onclick al botón "Borrar los datos introducidos"
+  const botonBorrar = document.querySelector('.borrar');
+  botonBorrar.onclick = borrarDatos;
+</script>
+
+
+
+
+</body>
+</html>

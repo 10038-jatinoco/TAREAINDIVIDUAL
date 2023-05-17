@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../Recursos/MisEstilos.css">
+    <title>Contacto</title>
+    <script>
+        function validar() {
+            var email = document.getElementById('email').value;
+            var telefono = document.getElementById('telefono').value;
+
+            // Expresión regular para validar correo electrónico
+            var expresionCorreo = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+            // Expresión regular para validar número de teléfono de 10 dígitos
+            var expresionTelefono = /^\d{10}$/;
+
+            // Validación de correo electrónico
+            if (!expresionCorreo.test(email)) {
+                alert("Correo electrónico no válido");
+                return false;
+            }
+
+            // Validación de número de teléfono
+            if (!expresionTelefono.test(telefono)) {
+                alert("Número de teléfono no válido");
+                return false;
+            }
+
+            // Deshabilitar botón de envío y cambiar texto a "Enviando datos ..."
+            var boton = document.getElementById('enviar');
+            boton.disabled = true;
+            boton.value = "Enviando datos ...";
+
+            // Duración del mensaje de 1 segundo
+            var duracionMensaje = 1;
+            var intervalo = setInterval(function() {
+            duracionMensaje--;
+            if (duracionMensaje == 0) {
+            clearInterval(intervalo);
+            document.FormContacto.submit();
+            }
+            }, 1000);
+
+
+
+            // Prevenir el envío del formulario mientras dura el mensaje
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <form name="FormContacto" onsubmit="return validar()">
+        <h2>Contacto</h2>
+
+        <label> Correo Electrónico </label>
+        <input type="text" id="email" name="email" placeholder="&#9993; usuario@mail.com" required><br>
+
+        <label>Fecha de Nacimiento</label><br>
+        <input type="date" name="fecha">
+
+        <label>Teléfono</label><br>
+        <input type="text" id="telefono" name="telefono"  placeholder="&#9742; Telefono" required>
+
+        <input type="submit" id="enviar" name="enviar" value="Enviar">
+
+    </form>
+    
+</body>
+</html>

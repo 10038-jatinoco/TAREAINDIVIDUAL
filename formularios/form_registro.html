@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registro</title>
+
+</head>
+<body>
+	<form>
+	 <fieldset>
+	 	<legend>DIRECCION DE ENVIO</legend>
+         <label for="calle_principa">Calle Principal</label><br>
+    <input type="text" id="calle" name="calle_principal">
+    <br>
+    <br>
+    <label for="transersal">Transversal</label><br>
+    <input type="text" id="trans" name="transersal">
+    <br><br>
+
+    <input type="checkbox" name="entrega">Entrega al propietario.
+    <br>
+    <input type="checkbox" name="tercero">Entrega a un tercero.
+    <br><br>
+
+     <label for="cantones">Cantones:</label>
+      <select id="cantones" name="cantones" style="width: 100px;">
+        <option value="quito">Quito</option>
+        <option value="cayambe">Cayambe</option>
+        <option value="mejia">Mejía</option>
+        <option value="pedro-moncayo">Pedro Moncayo</option>
+        <option value="puellaro">Puellaro</option>
+        <option value="rumiñahui">Rumiñahui</option>
+        <option value="san-miguel-de-los-bancos">San Miguel de los Bancos</option>
+      </select>
+      <br>
+      <br>
+      <input class="correct" type="submit" value="ENVIAR DATOS"> 
+     </fieldset>
+
+
+     <br>
+     <br>
+      <fieldset>
+	 	<legend>INFORMACION CONFIDENCIAL</legend>
+	 	<label for="codigo">Codigo Postal:</label>
+    <input type="text" id="codigo" name="codigo_postal">
+
+    <br>
+    <br>
+	 	<label for="codigo">Referencia de la Dirección:</label><br>
+    <textarea name="Referencia" rows="5" cols="35"></textarea>
+   <br>
+   <br>
+    <input type="submit" name="guardar"  value="GUARDAR">
+     </form>
+ </fieldset>
+<br>
+ 	<button onclick="window.location.href='../index.html'">Regresar</button>
+
+
+
+     <script>
+// Obtener los elementos del DOM que se necesitan
+const entregaCheckbox = document.querySelector('input[name="entrega"]');
+const tercerosCheckbox = document.querySelector('input[name="tercero"]');
+const infoConfidencialFieldset = document.querySelector('fieldset:nth-of-type(2)');
+const enviarDatosBtn = document.querySelector('input[type="submit"]');
+
+// Ocultar el campo de información confidencial al cargar la página
+infoConfidencialFieldset.style.display = 'none';
+enviarDatosBtn.disabled = true;
+
+// Agregar un event listener al checkbox de entrega al propietario
+entregaCheckbox.addEventListener('change', function() {
+  // Si el checkbox está marcado, habilitar el botón de enviar datos
+  if (this.checked) {
+    enviarDatosBtn.disabled = false;
+  } else {
+    // Si no está marcado, deshabilitar el botón de enviar datos
+    enviarDatosBtn.disabled = true;
+  }
+});
+
+// Agregar un event listener al checkbox de entrega a terceros
+tercerosCheckbox.addEventListener('change', function() {
+  // Si el checkbox está marcado, mostrar el campo de información confidencial
+  if (this.checked) {
+    infoConfidencialFieldset.style.display = 'block';
+    enviarDatosBtn.disabled = true;
+  } else {
+    // Si no está marcado, ocultar el campo de información confidencial
+    infoConfidencialFieldset.style.display = 'none';
+    enviarDatosBtn.disabled = true;
+  }
+});
+
+     </script>
+
+</body>
+</html>
